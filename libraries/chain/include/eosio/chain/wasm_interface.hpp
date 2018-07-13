@@ -7,6 +7,7 @@ namespace eosio { namespace chain {
 
    class apply_context;
    class wasm_runtime_interface;
+   class controller;
 
    struct wasm_exit {
       int32_t code = 0;
@@ -58,10 +59,10 @@ namespace eosio { namespace chain {
          ~wasm_interface();
 
          //validates code -- does a WASM validation pass and checks the wasm against EOSIO specific constraints
-         static void validate(const bytes& code);
+         static void validate(const controller& control, const bytes& code);
 
          //Calls apply or error on a given code
-         void apply(const digest_type& code_id, const shared_vector<char>& code, apply_context& context);
+         void apply(const digest_type& code_id, const shared_string& code, apply_context& context);
 
       private:
          unique_ptr<struct wasm_interface_impl> my;
@@ -73,3 +74,5 @@ namespace eosio { namespace chain {
 namespace eosio{ namespace chain {
    std::istream& operator>>(std::istream& in, wasm_interface::vm_type& runtime);
 }}
+
+FC_REFLECT_ENUM( eosio::chain::wasm_interface::vm_type, (wavm)(binaryen) )
