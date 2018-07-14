@@ -7,7 +7,8 @@ Import sql_db_plugin step:
 1. sudo apt install libsoci-dev
 2. ./eosio_build.sh
 3. cd build && make install
-4. add parameters: the db,host,port,user,password should be modified to your params
+4. add parameters: the db,host,port,user,password should be modified to your params.
+
 Eg: nodeos --plugin eosio::sql_db_plugin --sql_db-uri "mysql://db=eosblock host=127.0.0.1 port=3306  user=root password=WXF2RLbS2psewO8IT7w="  --sql_db-block-start 0 --delete-all-blocks
 
 the blocks and transactions should be added to your sql. 
