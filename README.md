@@ -12,7 +12,7 @@ Import sql_db_plugin step:
 Eg: nodeos --plugin eosio::sql_db_plugin --sql_db-uri "mysql://db=eosblock host=127.0.0.1 port=3306  user=root password=WXF2RLbS2psewO8IT7w="  --sql_db-block-start 0 --delete-all-blocks
 
 the blocks and transactions should be added to your sql. 
-##
+#
 
 Welcome to the EOSIO source code repository! This software enables businesses to rapidly build and deploy high-performance and high-security blockchain-based applications.
 
