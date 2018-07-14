@@ -2,7 +2,14 @@
 
 [![Build status](https://badge.buildkite.com/370fe5c79410f7d695e4e34c500b4e86e3ac021c6b1f739e20.svg?branch=master)](https://buildkite.com/EOSIO/eosio)
 
-Import sql_db_plugin step:
+
+鉴于之前为了获取交易记录，添加了--filter-on后由于数据量太大导致节点经常挂，所以改用mysql保存数据，也方便后期对交易数据的管理。在这里把代码开源，方便大家使用，后期如有新版本也会持续跟进。下面是操作步骤：
+1. 安装 libsoci-dev库：sudo apt install libsoci-dev
+2. 重新编译：./eosio_build.sh
+3. cd build && make install
+4. 启动mysql服务，配置参数：需要配置mysql的db名称，host和端口，用户名，用户名密码，节点启动后会同步数据到mysql中
+
+例如：nodeos --plugin eosio::sql_db_plugin --sql_db-uri "mysql://db=eosblock host=127.0.0.1 port=3306  user=root password=WXF2RLbS2psewO8IT7w="  --sql_db-block-start 0 --delete-all-blocks
 
 1. sudo apt install libsoci-dev
 2. ./eosio_build.sh
@@ -11,7 +18,6 @@ Import sql_db_plugin step:
 
 Eg: nodeos --plugin eosio::sql_db_plugin --sql_db-uri "mysql://db=eosblock host=127.0.0.1 port=3306  user=root password=WXF2RLbS2psewO8IT7w="  --sql_db-block-start 0 --delete-all-blocks
 
-the blocks and transactions should be added to your sql. 
 #
 
 Welcome to the EOSIO source code repository! This software enables businesses to rapidly build and deploy high-performance and high-security blockchain-based applications.
